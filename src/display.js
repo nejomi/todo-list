@@ -162,6 +162,7 @@ const display = (function () {
             todoItem.addEventListener('click', () => {
                 selectTodo(todo.getTitle());
                 viewTodo(todo);
+                console.log(todo.getDetails());
             })
 
             todoItem.classList.add('todo');
@@ -173,7 +174,7 @@ const display = (function () {
     }
 
     let resetAddFields = () => {
-        titleElement.value = descriptionElement.value = "";
+        titleElement.value = descriptionElement.value = priorityElement.value = "";
         dueDateElement.valueAsDate = new Date(); 
     }
 
@@ -183,11 +184,11 @@ const display = (function () {
         let description = descriptionElement.value;
         let dueDate = dueDateElement.value;
         let priority = priorityElement.value;
+        let status = 0;
 
-        
         if (title != "" && priority != "" && dueDate != "") {
             resetAddFields();
-            return {title, description, dueDate, priority};
+            return {title, description, dueDate, priority, status};
         }
 
         else {

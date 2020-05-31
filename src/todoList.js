@@ -1,6 +1,7 @@
 const todoList = (function () {
     // factory
     const Todo = (details) => {
+        console.log(details);
         const getTitle = () => details.title;
     
         const getDetails = () => {
@@ -122,8 +123,9 @@ const todoList = (function () {
         }
     }
     
-    const addTodo = (title, description, dueDate, priority) => {
-        currentProject.push(Todo(title, description, dueDate, priority));
+    const addTodo = (details) => {
+        let status = false;
+        currentProject.push(Todo(details));
         storage.save();
     }
 
