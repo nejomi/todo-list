@@ -16,6 +16,11 @@
 .current-todo {
     color: #2196f3;
 }
+
+.todo {
+    text-align: inherit;
+}
+
 li {
     cursor: pointer;
 }

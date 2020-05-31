@@ -70,8 +70,7 @@ const todoList = (function () {
         function check () {
             if (localStorage.getItem('userProjects') === null) {
                 let userProjects = {
-                    "Today": [],
-                    "Test Project": []
+                    "Today": []
                 }
         
                 localStorage.setItem("userProjects", JSON.stringify(userProjects))

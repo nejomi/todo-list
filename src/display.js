@@ -42,7 +42,6 @@ const display = (function () {
 
     const showProjects = () => {
         clearProjectList();
-        clearTodoDetails();
         let projects = todoList.getAllProjects();
         projects.forEach(project => {
             
@@ -71,14 +70,30 @@ const display = (function () {
         todoDetails.innerHTML = todo.getTitle();
     }
 
+
     const showProjectTodos = () => {
         clearProjectTodos();
         let projectTodos = todoList.getAllTodos();
         projectTodos.forEach(todo => {
+
+            let selectTodo = (title) => {
+                let todos = Array.from(document.querySelectorAll('.todo'));
+                
+                for(let i = 0; i < todos.length; i++) {
+                    todos[i].classList.remove('current-todo');
+                    if(todos[i].innerHTML == title) {
+                        todos[i].classList.add('current-todo');
+                    }
+                }
+            }
+
             let todoItem = document.createElement('li');
             todoItem.addEventListener('click', () => {
+                selectTodo(todo.getTitle());
                 viewTodo(todo);
             })
+
+            todoItem.classList.add('todo');
             todoItem.innerHTML = todo.getTitle();
             todos.appendChild(todoItem);
         })
