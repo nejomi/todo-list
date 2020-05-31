@@ -73,7 +73,9 @@ const display = (function () {
     }
 
     // create html elements on demand when todo is clicked and read the todo details
-    const createTodoDetails = (details) => {
+    const createTodoDetails = (todo) => {
+        let details = todo.getDetails();
+
         let detailsTitle = document.createElement('input');
         detailsTitle.type='text';
         detailsTitle.value = details['title'];
@@ -90,20 +92,49 @@ const display = (function () {
         detailsPriority.type = 'number';
         detailsPriority.value = details['priority']
 
+        let deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.innerHTML = 'Delete Todo';
+
+        deleteButton.addEventListener('click', () => {
+            todoList.deleteTodo(details['title']);
+            render();
+        })
+
         let saveButton = document.createElement('button');
         saveButton.type = 'button';
         saveButton.innerHTML = 'Save Changes';
 
-        return {detailsTitle, detailsDescription, detailsDate, detailsPriority, saveButton}
+        saveButton.addEventListener('click', () => {
+            let title = detailsTitle.value;
+            let description = detailsDescription.value;
+            let date = detailsDate.value;
+            let priority = detailsPriority.value;
+
+            if (title != details['title']) {
+                todo.changeDetail('title', title);
+            }
+            else if (description != details['description']) {
+                todo.changeDetail('description', description);
+            }
+            else if (date != details['dueDate']) {
+                todo.changeDetail('dueDate', date);
+            }
+            else if (priority != details['priority']) {
+                todo.changeDetail('priority', priority);
+            }
+
+            render();
+        })
+
+        return {detailsTitle, detailsDescription, detailsDate, detailsPriority, deleteButton, saveButton}
     }
 
     // if todo is clicked, show its details and allow user to edit it
     const viewTodo = (todo) => {
-        clearTodoDetails();
-        let details = todo.getDetails();
-        
+        clearTodoDetails(); 
         // create elements on demand
-        let elements = Object.values(createTodoDetails(details));
+        let elements = Object.values(createTodoDetails(todo));
 
         // append elements to details div
         elements.forEach(element => {

@@ -22,7 +22,7 @@ const todoList = (function () {
                     details.priority = value;
                     break;
             }
-            saveLocal();
+            storage.save();
         }
         
         return {
@@ -72,7 +72,7 @@ const todoList = (function () {
                 let userProjects = {
                     "Today": []
                 }
-        
+
                 localStorage.setItem("userProjects", JSON.stringify(userProjects))
             }
         }
@@ -112,26 +112,18 @@ const todoList = (function () {
         storage.save();
     }
 
-    const _findTodo = (todoTitle) => {
-        for (i=0; i<currentProject.length; i++) {
+    const deleteTodo = (todoTitle) => {
+        for(let i = 0; i < currentProject.length; i++) {
             if (currentProject[i].getTitle() == todoTitle) {
-                return currentProject[i];
+                currentProject.splice(i, 1);
+                storage.save();
+                return;
             }
         }
-    }
-
-    // not needed at the moment
-    const showTodo = (todoTitle) => {
-        console.log(_findTodo(todoTitle).getDetails());
     }
     
     const addTodo = (title, description, dueDate, priority) => {
         currentProject.push(Todo(title, description, dueDate, priority));
-        storage.save();
-    }
-
-    const updateTodo = (todoTitle, detail, value) => {
-        _findTodo(todoTitle).changeDetail(detail, value);
         storage.save();
     }
 
@@ -144,9 +136,11 @@ const todoList = (function () {
     }
 
     return {
-        addTodo, getProject, updateTodo, showTodo, getAllProjects, changeCurrent,
-        getCurrent, getAllTodos, addProject
+        addTodo, getProject, getAllProjects, changeCurrent,
+        getCurrent, getAllTodos, addProject, deleteTodo
     }
 })();
+
+
 
 export default todoList;
