@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Todo list</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+        <script src="main.js" async defer></script>
+    </head>
+    <body>
+        <main>
+            <h2>Project list</h2>
+            <ul id="projectList"></ul>
+            <input type="text" placeholder="project name" id="projectName">
+            <button type='button' id="addProject">+</button>
+            <p>__________________________ </p>   
+
+            <div>
+                <div class="current-project"></div>
+                <ol id="todo-list"></ol>
+            
+            <p>__________________________ </p>
+
+            <div class="todo-details">
+                
+            </div>
+
+            <p>__________________________ </p>   
+
+                <div class="todo-form">
+                    <input type="text" placeholder="task name" class="title" id="title">
+                    <input type="text" placeholder="task description" id="description">
+                    <input type="date" id="date">
+                    <input type="number" min="1" max="3" value="1" id="priority">
+                    <button type="button" id="addTodo">Add todo</button>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
