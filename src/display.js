@@ -9,6 +9,11 @@ const display = (function () {
     let dueDateElement = document.querySelector('#date');
     let priorityElement = document.querySelector('#priority');
 
+    // let detailsTitle = document.querySelector('#todoDetailsTitle');
+    // let detailsDescription = document.querySelector('#todoDetailsTitle');
+    // let detailsDate = document.querySelector('#todoDetailsTitle');
+    // let detailsPriority = document.querySelector('#todoDetailsTitle');
+
     let currentHeader = document.querySelector('.current-project');
     let todoDetails = document.querySelector('.todo-details');
 
@@ -42,6 +47,7 @@ const display = (function () {
 
     const showProjects = () => {
         clearProjectList();
+        clearTodoDetails();
         let projects = todoList.getAllProjects();
         projects.forEach(project => {
             
@@ -66,10 +72,44 @@ const display = (function () {
         currentHeader.innerHTML = current;
     }
 
-    const viewTodo = (todo) => {
-        todoDetails.innerHTML = todo.getTitle();
+    // create html elements on demand when todo is clicked and read the todo details
+    const createTodoDetails = (details) => {
+        let detailsTitle = document.createElement('input');
+        detailsTitle.type='text';
+        detailsTitle.value = details['title'];
+
+        let detailsDescription = document.createElement('input');
+        detailsDescription.type='text';
+        detailsDescription.value = details['description'];
+
+        let detailsDate = document.createElement('input');
+        detailsDate.type = 'date';
+        detailsDate.value = details['dueDate'];
+
+        let detailsPriority = document.createElement('input');
+        detailsPriority.type = 'number';
+        detailsPriority.value = details['priority']
+
+        let saveButton = document.createElement('button');
+        saveButton.type = 'button';
+        saveButton.innerHTML = 'Save Changes';
+
+        return {detailsTitle, detailsDescription, detailsDate, detailsPriority, saveButton}
     }
 
+    // if todo is clicked, show its details and allow user to edit it
+    const viewTodo = (todo) => {
+        clearTodoDetails();
+        let details = todo.getDetails();
+        
+        // create elements on demand
+        let elements = Object.values(createTodoDetails(details));
+
+        // append elements to details div
+        elements.forEach(element => {
+            todoDetails.appendChild(element);
+        })
+    }
 
     const showProjectTodos = () => {
         clearProjectTodos();
