@@ -207,7 +207,10 @@ const display = (function () {
     }
 
     const addProject = () => {
-        const projectName = document.querySelector('#projectName');
+        const projectName = document.querySelector('#addProjectName');
+        if (projectName.value == "") {
+            return;
+        }
         todoList.addProject(projectName.value);
         changeProject(projectName.value);
         projectName.value = "";
@@ -216,7 +219,7 @@ const display = (function () {
 
     const renderButtons = () => {
         const addTodoButton = document.querySelector('#addTodo');
-        const addProjectButton = document.querySelector('#addProject');
+        const addProjectButton = document.querySelector('#addProjectButton');
 
         addTodoButton.addEventListener('click', addTodo);
         addProjectButton.addEventListener('click', addProject);
