@@ -7,10 +7,37 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
         <script src="main.js" async defer></script>
     </head>
     <body>
         <main>
+            <header>
+                <h1 class="header">todo list</h1>
+            </header>
+            <div class="main-container">
+                <div class="side-bar">
+                    <div id="sideBarProjects"></div>
+    
+                    <div class="side-bar-divider"></div>
+    
+                    <div class="add-project-container">
+                        <div class="add-project-label side-bar-text ">Add Project: </div>
+                        
+                        <div class="add-project-form">
+                            <input type="text" id="addProjectName">
+                            <img id="addProjectButton" src="assets/add.svg">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="main-box">
+                    
+                </div>
+            </div>
+    
+            </div>
+
             <h2>Project list</h2>
             <ul id="projectList"></ul>
             <input type="text" placeholder="project name" id="projectName">

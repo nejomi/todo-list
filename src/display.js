@@ -1,7 +1,7 @@
 import todoList from './todoList'
 
 const display = (function () {
-    const projectList = document.querySelector('#projectList');
+    const projectList = document.querySelector('#sideBarProjects');
     const todos = document.querySelector('#todo-list')
 
     let titleElement = document.querySelector('#title');
@@ -52,7 +52,7 @@ const display = (function () {
         projects.forEach(project => {
             
             let createProjectItem = () =>{
-                let li = document.createElement('li');
+                let li = document.createElement('div');
                 li.addEventListener("click", () => {
                     changeProject(project);
                 })
@@ -61,8 +61,10 @@ const display = (function () {
 
             let projectItem = createProjectItem();
             if (isCurrentProject(project) == true) {
-                projectItem.classList.add('selected')
+                projectItem.classList.add('selected-project')
             }
+
+            projectItem.classList.add('project-name','side-bar-text');
             projectItem.innerHTML = project;
             projectList.appendChild(projectItem);
             })

@@ -24,3 +24,101 @@
 li {
     cursor: pointer;
 }
+
+body {
+    background-color: #2C3E50;
+    font-size: 18px;
+}
+
+.header {
+    font-family: 'Roboto Mono', monospace;
+    color: #fafafa;
+    font-weight: normal;
+    text-align: center;
+}
+
+.side-bar {
+    width: 13em;
+    height: 40em;
+    background-color: #ECF0F1;
+    padding-top: 3em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.main-box {
+    width: 25em;
+    height: 35em;
+    background-color: #fafafa;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-bar-text {
+    padding-left: 1em;
+    font-family: 'Roboto', serif;
+}
+.project-name {
+    width: auto;
+    height: 2em;
+    line-height: 2em;
+    font-size: 24px;
+    vertical-align: middle;
+    color: #6F6F70;
+    cursor: pointer;
+}
+
+.selected-project {
+    color: #3498DB;
+    background-color: #E3EBF0;
+}
+
+.side-bar-line {
+    width: auto;
+    height: 0;
+    border: 1px solid #EBE8E8;
+    transform: rotate(0.27deg);
+}
+
+.side-bar-divider {
+    width: 80%;
+    height: 0px;
+    border-top: 1px solid #dcdcdc;
+    margin: 15px auto;
+}
+
+.add-project-container {
+    width: auto;
+    height: 12%;
+}
+
+.add-project-label {
+    color: #575757;
+    padding-left: 1.33em;
+    margin-bottom: 5px;
+}
+
+.add-project-form {
+    display: flex;
+    align-items: center;
+}
+
+#addProjectName {
+    margin-left: 1.33em;
+    font-size: inherit;
+    width: 62%;
+    height: 1.5em;
+    color: #424242;
+    border: 1px solid #59aff3;
+    outline: none;
+}
+
+#addProjectButton {
+    margin-left: 5px;
+    cursor: pointer;
+}
