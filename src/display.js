@@ -2,7 +2,7 @@ import todoList from './todoList'
 
 const display = (function () {
     const projectList = document.querySelector('#sideBarProjects');
-    const todos = document.querySelector('#todo-list')
+    const todos = document.querySelector('#task-list')
 
     let titleElement = document.querySelector('#title');
     let descriptionElement = document.querySelector('#description');
@@ -159,21 +159,56 @@ const display = (function () {
                     }
                 }
             }
+            
+            let todoItem = document.createElement('div');
+            todoItem.classList.add('task');
 
-            let todoItem = document.createElement('li');
+            let todoLeft = document.createElement('div');
+            todoLeft.classList.add('task-left');
+
+            let taskBox = document.createElement('div');
+            taskBox.classList.add('task-box');
+
+            if (todo.getPriority() == 1) {
+                taskBox.classList.add('priority-1')
+            }
+            else if (todo.getPriority() == 2) {
+                taskBox.classList.add('priority-2')
+            }
+            else if (todo.getPriority() == 3) {
+                taskBox.classList.add('priority-3')
+            }
+
+            taskBox.addEventListener('click', ()=> {
+                console.log('give up');
+            })
+
             todoItem.addEventListener('click', () => {
                 selectTodo(todo.getTitle());
                 viewTodo(todo);
                 console.log(todo.getDetails());
             })
 
-            todoItem.classList.add('todo');
-            todoItem.innerHTML = todo.getTitle();
+            let taskTitle = document.createElement('div');
+            taskTitle.innerHTML = todo.getTitle();
+            
+            let editButton = document.createElement('img');
+            editButton.classList.add('edit-button');
+            editButton.src = "assets/create-24px.svg";
+            
+
+            todoLeft.appendChild(taskBox);
+            todoLeft.appendChild(taskTitle);
+            
+            todoItem.appendChild(todoLeft);
+            todoItem.appendChild(editButton);
+
             todos.appendChild(todoItem);
         })
 
         updateProjectHeader();
     }
+
 
     let resetAddFields = () => {
         titleElement.value = descriptionElement.value = priorityElement.value = "";

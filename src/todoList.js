@@ -7,6 +7,8 @@ const todoList = (function () {
         const getDetails = () => {
             return details
         }
+
+        const getPriority = () => details.priority;
         
         const changeDetail  = (detail, value) =>  { 
             switch (detail) {
@@ -27,7 +29,7 @@ const todoList = (function () {
         }
         
         return {
-            getTitle, getDetails, changeDetail
+            getTitle, getDetails, changeDetail, getPriority
         }
     }
 

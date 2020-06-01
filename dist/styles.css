@@ -132,6 +132,52 @@ body {
     text-align: inherit;
 }
 
+.task {
+    width: 400px;
+    height: 46px;
+    background-color: #F4F4F4;
+    margin: 10px 15px 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-box {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    margin: 0px 15px 0px 15px;
+}
+
+.priority-1 {
+    border: 1px solid #b9b9b9;
+}
+.priority-2 {
+    border: 1px solid #459BFF;
+}
+.priority-3 {
+    border: 1px solid #FF4E4E;
+}
+.task-box-done {
+    background-color: black;
+}
+
+.task-left {
+    display: flex;
+}
+
+.task-name {
+    font-size: 18px;
+}
+
+.task-done {
+    background-color: #E0E0E0; 
+    text-decoration: line-through;
+}
+.edit-button {
+    margin-right: 20px;
+    cursor: pointer;
+}
 li {
     cursor: pointer;
 }
